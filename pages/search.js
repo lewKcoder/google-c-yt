@@ -1,13 +1,14 @@
-import Head from "next/head";
-import { useRouter } from "next/router";
-import Header from "../components/Header";
-import { API_KEY, CONTEXT_KEY } from "../keys";
-import Response from "../Response";
-import SearchResults from "../components/SearchResults";
+import Head from 'next/head';
+import { useRouter } from 'next/router';
+import Header from '../components/Header';
+import { API_KEY, CONTEXT_KEY } from '../keys';
+import Response from '../Response';
+import SearchResults from '../components/SearchResults';
 
 function search({ results }) {
   const router = useRouter();
 
+  console.log(results);
   return (
     <div>
       <Head>
@@ -24,8 +25,8 @@ function search({ results }) {
 export default search;
 
 export async function getServerSideProps(context) {
-  const useDummyData = true;
-  const startIndex = context.query.start || "0";
+  const useDummyData = false;
+  const startIndex = context.query.start || '0';
 
   const data = useDummyData
     ? Response
