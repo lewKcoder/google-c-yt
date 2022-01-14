@@ -9,13 +9,12 @@ function Header() {
   const router = useRouter();
   const searchInputRef = useRef(null);
   const search = (e) => {
-    e.preventDefault();
-
+    console.log(searchInputRef.current.value);
     const term = searchInputRef.current.value;
-
     if (!term) return;
 
     router.push(`/search?term=${term}`);
+    e.preventDefault();
   };
   return (
     <header className="sticky top-0 bg-white">
@@ -41,10 +40,10 @@ function Header() {
             onClick={() => (searchInputRef.current.value = '')}
           />
           <MicrophoneIcon className="mr-3 h-6 hidden sm:inline-flex text-blue-500 border-l-2 pl-4 border-gray-300" />
-          <SearchIcon className="h-6 text-blue-500 hidden sm:inline-flex" />
-          <button hidden type="submit" onClick={search}>
-            Search
-          </button>
+          <SearchIcon
+            className="h-6 text-blue-500 hidden sm:inline-flex cursor-pointer"
+            onClick={search}
+          />
         </form>
         <Avatar url="/avatar.png" className="ml-auto" />
       </div>
